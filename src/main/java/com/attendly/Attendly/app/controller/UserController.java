@@ -1,5 +1,7 @@
 package com.attendly.Attendly.app.controller;
 
+import com.attendly.Attendly.app.dto.LoginRequest;
+import com.attendly.Attendly.app.dto.LoginResponse;
 
 import com.attendly.Attendly.app.model.Users;
 import com.attendly.Attendly.app.service.UserService;
@@ -14,12 +16,8 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @PostMapping("/register")
-    public Users register(@RequestBody Users user) {
-        return service.register(user);
-    }
-
-    public String login(@RequestBody Users user){
-        return service.verify(user);
+    @PostMapping("/login")
+    public LoginResponse login(@RequestBody LoginRequest request){
+        return service.login(request);
     }
 }

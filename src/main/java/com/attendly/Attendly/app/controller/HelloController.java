@@ -11,6 +11,6 @@ public class HelloController {
 
     @GetMapping("/")
     public String greet(HttpServletRequest request){
-        return "Hell, Welcome to your beginning! Evelyn and Jeremiah" + request.getSession().getId();
+        return "Hello, Welcome to your beginning! Evelyn and Jeremiah" + request.getSession().getId();
     }
 }
