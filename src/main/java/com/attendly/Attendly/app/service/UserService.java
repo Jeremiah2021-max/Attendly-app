@@ -41,7 +41,7 @@ public class UserService {
         return "Failed";
     }
     public LoginResponse login(LoginRequest request){
-        Users user = repo.findByEmail(request.getEmail());
+        Users user = repo.findByUsername(request.getUsername());
 
         if (user ==null){
             return new LoginResponse("User not found", false);
@@ -50,9 +50,9 @@ public class UserService {
         if (!user.getPassword().equals(request.getPassword())){
             return new LoginResponse("Incorrect Password", false);
         }
-        String token = jwtService.generateToken(user.getUsername());
 
-        return new LoginResponse("Login Successful", true);
+        String token = jwtService.generateToken(user.getUsername());
+        return new LoginResponse("Login Successful", true, token);
     }
     public Users registerCourseRep(Users user){
         user.setPassword(encoder.encode(user.getPassword()));
