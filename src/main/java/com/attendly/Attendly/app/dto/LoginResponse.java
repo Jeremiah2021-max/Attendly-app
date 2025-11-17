@@ -2,13 +2,19 @@ package com.attendly.Attendly.app.dto;
 
 public class LoginResponse {
     private String message;
-    private boolean status;
+    private boolean success;
+    public String token;
 
     public LoginResponse(){}
 
-    public LoginResponse(String message, boolean status){
+    public LoginResponse(String message, boolean success){
         this.message = message;
-        this.status = status;
+        this.success = success;
+    }
+    public LoginResponse(String message, boolean success, String token){
+        this.message = message;
+        this.success = success;
+        this.token = token;
     }
 
     public  String getMessage(){
@@ -17,13 +23,5 @@ public class LoginResponse {
 
     public void setMessage(String message){
         this.message = message;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 }

@@ -50,6 +50,7 @@ public class UserService {
         if (!user.getPassword().equals(request.getPassword())){
             return new LoginResponse("Incorrect Password", false);
         }
+        String token = jwtService.generateToken(user.getUsername());
 
         return new LoginResponse("Login Successful", true);
     }
